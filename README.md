@@ -1,4 +1,4 @@
-Tamagotchi Virtual 🎮
+# Tamagotchi Virtual 🎮
 https://ciaramellad.github.io/tamagotchi/
 
 Juego web creado para Carrera de Desarrollo Web - CoderHouse
