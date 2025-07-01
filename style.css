@@ -1,18 +1,112 @@
-body{
-    background-color: pink;
-    display:flex;
-    justify-content: center;
-}
-
-h1{
-    font-size: 40px;
-    color: rgb(5, 23, 104);
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #d0f7f8;
+    color: #70b7c0;
     font-family: "Press Start 2P", system-ui;
+    font-size: 12px;
+    text-align: center;
+    }
+
+.dark-mode {
+    background-color: #133342;
+    color: #70b7c0;
 }
 
-p{
-    font-size: 20px;
-    color: rgb(5, 23, 104);
+#reloj {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 15px;
+}
+
+#modo-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 999;
+}
+
+.container {
+    max-width: 600px;
+    margin: 80px auto 20px;
+    padding: 20px;
+    border: 4px solid #70b7c0;
+    box-shadow: 0 0 10px #70b7c0;
+    border-radius: 40px;
+}
+
+img {
+    width: 150px;
+    image-rendering: pixelated;
+    margin: 10px 0;
+}
+
+input {
+    margin: 5px;
+    padding: 15px 10px;
+    background: #08182000;
+    color: #70b7c0;
+    border: 2px solid #70b7c0;
     font-family: "Press Start 2P", system-ui;
+    width: 80%;
+    border-radius: 10px;
 }
 
+button {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px 16px;
+    background: #70b7c0;
+    color: #133342;
+    border: 3px solid #70b7c0;
+    cursor: pointer;
+    font-family: "Press Start 2P", system-ui;
+    font-size: 10px;
+    text-transform: uppercase;
+    transition: transform 0.1s ease-in-out;
+    border-radius: 10px;
+}
+
+#btn-reiniciar{
+    background-color:#d0f7f8 ;
+    color:#133342;
+
+}
+button:hover {
+    transform: scale(1.05);
+    background-color: #133342;
+    color: #70b7c0;
+}
+
+.hidden {
+    display: none;
+}
+
+.estado {
+    margin-top: 20px;
+    line-height: 2;
+}
+
+h1, h2 {
+    margin: 10px 0;
+}
+
+@media (max-width: 600px) {
+    .container {
+    margin: 40px 10px;
+    }
+
+    input {
+    width: 90%;
+    }
+
+    button {
+    font-size: 8px;
+    padding: 8px 12px;
+    }
+
+    #reloj {
+    font-size: 8px;
+    }
+}

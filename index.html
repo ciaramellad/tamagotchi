@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,10 +12,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div>
-        <h1>Tamagotchi</h1>
-        <p>¡Interactua con tu mascota virtual!</p>
+  <div id="reloj"></div>
+  <button id="modo-btn" onclick="toggleModo()">DAY/NIGHT</button>
+
+  <div class="container">
+    <h1>Tamagotchi</h1>
+    <img src="assets/tamagotchi.gif" alt="Tamagotchi" id="tamagotchi-img">
+
+    <div id="formulario">
+      <input type="text" id="nombre" placeholder="Nombre">
+      <button onclick="crearTamagotchi()">Crear</button>
     </div>
-    <img src="assets/tamagotchi.gif">
+
+    <div id="container-info" class="hidden">
+      <h2 id="saludo"></h2>
+      <div class="estado">
+        Hambre: <span id="hambre">100</span><br>
+        Diversión: <span id="diversion">100</span><br>
+        Sueño: <span id="sueno">100</span><br>
+        Limpieza: <span id="limpieza">100</span>
+      </div>
+      <div style="margin-top: 15px;">
+        <button onclick="alimentar()">Comer</button>
+        <button onclick="jugar()">Jugar</button>
+        <button onclick="dormir()">Dormir</button>
+        <button onclick="limpiar()">Limpiar</button>
+      </div>
+      <div style="margin-top: 15px;">
+        <button id="btn-reiniciar" onclick="reiniciar()">Reiniciar</button>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
