@@ -1,121 +1,3 @@
-const personajes = [
-  { id: 1, name: "R2-D2", img: "assets/personajes_starwars/r2d2.gif" },
-  { id: 2, name: "Darth Vader", img: "assets/personajes_starwars/darth_vader.gif" },
-  { id: 3, name: "Yoda", img: "assets/personajes_starwars/yoda_baby.gif" },
-  { id: 4, name: "Princesa Leia", img: "assets/personajes_starwars/leia_organa.png" },
-  { id: 5, name: "Chewbacca", img: "assets/personajes_starwars/chewbacca.png" },
-  { id: 6, name: "C3 PO", img: "assets/personajes_starwars/c3po.png" }
-];
-
-let calma; 
-let sabiduria; 
-let fuerza;
-let mascotaNombre = "";
-let personajeSeleccionado = null;
-let intervaloEstados;
-
-const inicio = document.querySelector("#inicio");
-const juego = document.querySelector("#juego");
-const nombreInput = document.querySelector("#nombre");
-const personajesSelect = document.querySelector("#personajes");
-const startBtn = document.querySelector("#start-btn");
-
-const tituloJuego = document.querySelector("#titulo-juego");
-const subtituloJuego = document.querySelector("#subtitulo-juego");
-const imgPersonaje = document.querySelector("#img-personaje");
-
-const calmaBarra = document.querySelector("#calma-barra");
-const sabiduriaBarra = document.querySelector("#sabiduria-barra");
-const fuerzaBarra = document.querySelector("#fuerza-barra");
-
-const meditarBtn = document.querySelector("#meditar-btn");
-const entrenarBtn = document.querySelector("#entrenar-btn");
-const batallarBtn = document.querySelector("#batallar-btn");
-
-const reiniciarBtn = document.querySelector("#reiniciar-btn");
-const darkmodeBtn = document.querySelector("#darkmode-btn");
-
-document.addEventListener("DOMContentLoaded", () => {
-  cargarPersonajes();
-
-  if (cargarEstado()) {
-    mostrarJuego();
-  } else {
-    inicio.classList.add("visible-flex");
-    inicio.classList.remove("oculto");
-    juego.classList.add("oculto");
-    juego.classList.remove("visible-flex");
-  }
-});
-
-const cargarPersonajes = () => {
-  personajesSelect.innerHTML = "";
-  personajes.forEach(p => {
-    const option = document.createElement("option");
-    option.value = p.id;
-    option.textContent = p.name;
-    personajesSelect.appendChild(option);
-  });
-};
-
-
-const actualizarBarras = () => {
-  const estados = {
-    calma: calma,
-    sabiduria: sabiduria,
-    fuerza: fuerza
-  };
-
-  for (const estado in estados) {
-    const barra = document.querySelector(`#${estado}-barra`);
-    barra.style.width = estados[estado] + "%";
-  }
-};
-
-
-const cambiarEstado = (tipo, cantidad) => {
-  if (tipo === "calma") calma = Math.min(100, Math.max(0, calma + cantidad));
-  if (tipo === "sabiduria") sabiduria = Math.min(100, Math.max(0, sabiduria + cantidad));
-  if (tipo === "fuerza") fuerza = Math.min(100, Math.max(0, fuerza + cantidad));
-  actualizarBarras();
-  guardarEstado();
-};
-
-
-const guardarEstado = () => {
-  const estado = { 
-    calma, 
-    sabiduria, 
-    fuerza, 
-    mascotaNombre, 
-    personajeId: personajeSeleccionado.id 
-  };
-
-  localStorage.setItem("starwars-tamagotchi", JSON.stringify(estado));
-};
-
-
-const cargarEstado = () => {
-  const estado = JSON.parse(localStorage.getItem("starwars-tamagotchi"));
-  if (estado) {
-    calma = estado.calma;
-    sabiduria = estado.sabiduria;
-    fuerza = estado.fuerza;
-    mascotaNombre = estado.mascotaNombre;
-    personajeSeleccionado = personajes.find(p => p.id === estado.personajeId) || personajes[0];
-    return true;
-  }
-  return false;
-};
-
-
-const bajarEstados = () => {
-  cambiarEstado("calma", -5);
-  cambiarEstado("sabiduria", -5);
-  cambiarEstado("fuerza", -5);
-};
-
-
 const mostrarJuego = () => {
   document.querySelector("#inicio").style.display = "none";
   document.querySelector("#juego").style.display = "flex";
@@ -126,6 +8,7 @@ const mostrarJuego = () => {
   intervaloEstados = setInterval(bajarEstados, 10000);
 };
 
+// Iniciar juego
 const iniciarJuego = () => {
   const nombre = nombreInput.value.trim();
   const personajeId = parseInt(personajesSelect.value);
@@ -138,9 +21,7 @@ const iniciarJuego = () => {
     Swal.fire("Error", "Por favor selecciona un personaje.", "warning");
     return;
   }
-}
 
-<<<<<<< HEAD
   mascotaNombre = nombre;
   personajeSeleccionado = personajes.find(p => p.id === personajeId);
   calma = Math.floor(Math.random() * 41) + 60;
@@ -150,6 +31,9 @@ const iniciarJuego = () => {
   guardarEstado();
   mostrarJuego();
 };
+
+
+
 
 const meditar = () => {
   cambiarEstado("calma", +10);
@@ -229,47 +113,3 @@ meditarBtn.addEventListener("click", meditar);
 entrenarBtn.addEventListener("click", entrenar);
 batallarBtn.addEventListener("click", batallar);
 reiniciarBtn.addEventListener("click", reiniciarJuego);
-=======
-function actualizarEstado() {
-  estados.forEach(e => {
-    document.getElementById(e.nombre).textContent = e.valor;
-  });
-}
-
-function reiniciar() {
-  localStorage.removeItem("tamagotchi");
-  location.reload();
-}
-
-function toggleModo() {
-  document.body.classList.toggle("dark-mode");
-}
-
-function guardarDatos() {
-  const datos = {
-    nombre,
-    estados: estados.map(e => ({ nombre: e.nombre, valor: e.valor }))
-  };
-  localStorage.setItem("tamagotchi", JSON.stringify(datos));
-}
-
-function cargarDatos() {
-  const datos = JSON.parse(localStorage.getItem("tamagotchi"));
-  if (datos) {
-    nombre = datos.nombre;
-    estados.forEach(e => {
-      const guardado = datos.estados.find(est => est.nombre === e.nombre);
-      if (guardado) e.valor = guardado.valor;
-    });
-    document.getElementById("saludo").textContent = `Hola soy ${nombre}, tu mascota virtual`;
-    document.getElementById("formulario").classList.add("hidden");
-    document.getElementById("container-info").classList.remove("hidden");
-    actualizarEstado();
-  }
-}
-
-window.onload = () => {
-  cargarDatos();
-  setInterval(bajarValores, 1800000);
-};
->>>>>>> ffdfa51e7e716e9a1095e4ec5b1cfa25ce63750b
