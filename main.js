@@ -1,5 +1,5 @@
 const personajes = [
-  { id: 1, name: "R2-D2", img: "assets/personajes_starwars/r2d2.gif" },
+  { id: 1, name: "R2-D2", img: "/assets/personajes_starwars/r2d2.gif" },
   { id: 2, name: "Darth Vader", img: "assets/personajes_starwars/darth_vader.gif" },
   { id: 3, name: "Yoda", img: "assets/personajes_starwars/yoda_baby.gif" },
   { id: 4, name: "Princesa Leia", img: "assets/personajes_starwars/leia_organa.png" },
