@@ -1,21 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tamagotchi</title>
-    <script src="./main.js" defer></script>
+<html lang="es">
+</html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Star Wars Tamagotchi</title>
     <link rel="stylesheet" href="style.css" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Press+Start+2P&display=swap" rel="stylesheet">
-</head>
-<body>
-    <div>
-        <h1>Tamagotchi</h1>
-        <p>¡Interactua con tu mascota virtual!</p>
+    <script defer src="main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <button id="darkmode-btn">Dark Mode</button>
+    <div class="container" id="inicio">
+      <img
+        src="assets/logo_starwars.png"
+        alt="Star Wars"
+        class="logo"
+      />
+      <h1 class="titulo">Tamagotchi</h1>
+      <input type="text" id="nombre" placeholder="Ponle nombre a tu tamagotchi" />
+      <select id="personajes">
+        
+      </select>
+      <button id="start-btn">Empezar</button>
     </div>
-    <img src="assets/tamagotchi.gif">
-</body>
+
+    <div class="container" id="juego" style="display: none">
+      <h2 id="titulo-juego"></h2>
+      <img id="img-personaje" class="pixel" src="" alt="Personaje" />
+      <h2 id="subtitulo-juego"></h2>
+
+      <div class="barra">
+        <label>CALMA</label>
+        <div class="barra-bg">
+          <div id="calma-barra" class="barra-carga"></div>
+        </div>
+      </div>
+      <div class="barra">
+        <label>SABIDURÍA</label>
+        <div class="barra-bg">
+          <div id="sabiduria-barra" class="barra-carga"></div>
+        </div>
+      </div>
+      <div class="barra">
+        <label>FUERZA</label>
+        <div class="barra-bg">
+          <div id="fuerza-barra" class="barra-carga"></div>
+        </div>
+      </div>
+
+      <div class="botones">
+        <button id="meditar-btn">Meditar</button>
+        <button id="entrenar-btn">Entrenar</button>
+        <button id="batallar-btn">Batallar</button>
+      </div>
+
+      <button id="reiniciar-btn">Reiniciar</button>
+    </div>
+    <p id="info">CoderHouse | Daiana Ciaramella</p>
+  </body>
 </html>
