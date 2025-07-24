@@ -138,7 +138,9 @@ const iniciarJuego = () => {
     Swal.fire("Error", "Por favor selecciona un personaje.", "warning");
     return;
   }
+}
 
+<<<<<<< HEAD
   mascotaNombre = nombre;
   personajeSeleccionado = personajes.find(p => p.id === personajeId);
   calma = Math.floor(Math.random() * 41) + 60;
@@ -227,3 +229,47 @@ meditarBtn.addEventListener("click", meditar);
 entrenarBtn.addEventListener("click", entrenar);
 batallarBtn.addEventListener("click", batallar);
 reiniciarBtn.addEventListener("click", reiniciarJuego);
+=======
+function actualizarEstado() {
+  estados.forEach(e => {
+    document.getElementById(e.nombre).textContent = e.valor;
+  });
+}
+
+function reiniciar() {
+  localStorage.removeItem("tamagotchi");
+  location.reload();
+}
+
+function toggleModo() {
+  document.body.classList.toggle("dark-mode");
+}
+
+function guardarDatos() {
+  const datos = {
+    nombre,
+    estados: estados.map(e => ({ nombre: e.nombre, valor: e.valor }))
+  };
+  localStorage.setItem("tamagotchi", JSON.stringify(datos));
+}
+
+function cargarDatos() {
+  const datos = JSON.parse(localStorage.getItem("tamagotchi"));
+  if (datos) {
+    nombre = datos.nombre;
+    estados.forEach(e => {
+      const guardado = datos.estados.find(est => est.nombre === e.nombre);
+      if (guardado) e.valor = guardado.valor;
+    });
+    document.getElementById("saludo").textContent = `Hola soy ${nombre}, tu mascota virtual`;
+    document.getElementById("formulario").classList.add("hidden");
+    document.getElementById("container-info").classList.remove("hidden");
+    actualizarEstado();
+  }
+}
+
+window.onload = () => {
+  cargarDatos();
+  setInterval(bajarValores, 1800000);
+};
+>>>>>>> ffdfa51e7e716e9a1095e4ec5b1cfa25ce63750b
