@@ -4,18 +4,21 @@ https://ciaramellad.github.io/tamagotchi/
 Juego web creado para Carrera de Desarrollo Web - CoderHouse
 Curso: Java Script
 
-Cuida a tu mascota virtual y mantene sus estados de hambre, diversión, sueño y limpieza en buen nivel para que esté feliz.
+Cuida y entrena a tu personaje favorito de Star Wars Tamagotchi
+El objetivo: mantener sus estados equilibrados para que sobreviva.
 
-# Características
+# Funcionalidades
 
-- Guarda el progreso en tu navegador usando Local Storage
-- Cambia entre modo claro y oscuro
-- Reloj en tiempo real
-- Diferentes acciones para tu mascota
+- Elegi a tu personaje favorito
+- Ponele el nombre que mas te guste, sin que pierda la personalidad de un verdadero personaje de Starwars
+- Hay tres estados: fuerza, sabiduria y calma. Estos estados van descendiendo cada diez segundos
+- Modo claro y oscuro
+
 
 # Tecnologías
 
 - HTML  
 - CSS  
 - JavaScript  
+- Sweet Alert 2
 
